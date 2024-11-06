@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday Byy!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('nadeko.gif'), url('party.gif');
+            background-size: cover, contain;
+            background-repeat: no-repeat, no-repeat;
+            background-position: center center, top right;
+            background-attachment: fixed, fixed;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .image-container img,
+        .left-gif img,
+        .right-gif img,
+        .overlay-image img {
+            display: none; /* Initially hidden */
+        }
+
+        .left-gif,
+        .right-gif,
+        .overlay-image {
+            position: fixed;
+        }
+
+        .left-gif {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .right-gif {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .overlay-image {
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .party-popper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 200px;
+            animation: appear 0.5s ease forwards;
+        }
+
+        @keyframes appear {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .countdown {
+            font-size: 50px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: fade-in 2s ease forwards;
+        }
+
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .custom-text {
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            animation: fade-in 3s ease forwards;
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown" id="countdown">3</div>
+
+    <div class="left-gif" id="leftGif">
+        <img src="dance.gif" alt="Dance GIF">
+    </div>
+
+    <div class="right-gif" id="rightGif">
+        <img src="girls.gif" alt="Girls GIF">
+    </div>
+
+    <div class="image-container" id="imageContainer">
+        <img src="icon.png" alt="Happy Birthday" id="happyImage" onclick="showPartyPopper()">
+    </div>
+
+    <div class="overlay-image" id="overlayImage">
+        <a href="C:\CPE\CIT\3rd year\Happy Birthday/message.html">
+            <img src="message.gif" alt="My message for you" style="max-width: 100px; height: auto;">
+        </a>
+    </div>
+
+    <div class="audio-player">
+        <audio id="audioElement">
+            <source src="caramel.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="custom-text" id="customText">Click for music</div>
+
+  <script>
+    // Countdown logic
+    let countdownEl = document.getElementById('countdown');
+    let countdownValue = 3; // Starting value of the countdown
+
+    // Display the initial countdown value
+    countdownEl.textContent = countdownValue;
+
+    // Start the countdown interval
+    let countdownInterval = setInterval(function() {
+        countdownValue--;
+
+        if (countdownValue > 0) {
+            countdownEl.textContent = countdownValue;
+        } else {
+            clearInterval(countdownInterval);
+            countdownEl.style.display = 'none'; // Hide the countdown
+
+            // Show the main image, custom text, and gifs
+            document.getElementById('imageContainer').querySelector('img').style.display = 'block';
+            document.getElementById('customText').style.display = 'block';
+            document.getElementById('leftGif').querySelector('img').style.display = 'block';
+            document.getElementById('rightGif').querySelector('img').style.display = 'block';
+            document.getElementById('overlayImage').querySelector('img').style.display = 'block';
+
+            var audio = document.getElementById('audioElement');
+            audio.volume = 1; // Ensure the volume is up
+            audio.play().catch(error => {
+                console.log("Autoplay error, waiting for user interaction:", error);
+                document.addEventListener('click', function() {
+                    audio.play().catch(err => console.log("Error playing on click:", err));
+                }, { once: true });
+            });
+        }
+    }, 1000); // Countdown updates every 1 second
+</script>
+

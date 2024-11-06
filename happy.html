@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For u cutie</title>
+    <style>
+        body {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transition: opacity 0.5s ease, background-image 0.5s ease;         }
+
+        .surprise-box {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .surprise-box button {
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 12px;
+            background-color: #ff6f91;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        .surprise-box button:hover {
+            background-color: #ff3d70;
+        }
+
+        .image-container {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .surprise-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #22333b;
+            display: none;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            width: 300px;
+            border-radius: 10px;
+            animation: shake 0.10s;
+            transition: opacity 1s ease-in-out;
+            opacity: 1;
+        }
+
+        /* Shake animation */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-overlay" id="backgroundOverlay"></div>
+    
+    <div class="surprise-box">
+        <button onclick="toggleImage()">Click this byy!!</button>
+        <div class="image-container" id="birthdayImageContainer">
+            <div class="surprise-text" id="surpriseText">Hello Sexy (˵ ¬ᴗ¬˵) </div>
+            <img src="gudetama.png" alt="Gudetama" id="birthdayImage"> 
+            <a href="C:\CPE\CIT\3rd year\Happy Birthday\firstp.html" class="for-u-link" id="forULink" style="display: none;">for u</a>
+
+        </div>
+    </div>
+
+    <audio id="birthdayMusic" src="Careless.mp3"></audio> 
+    <script>
+        function toggleImage() {
+            const imageContainer = document.getElementById('birthdayImageContainer');
+            const image = document.getElementById('birthdayImage');
+            const text = document.getElementById('surpriseText');
+            const music = document.getElementById('birthdayMusic');
+            const backgroundOverlay = document.getElementById('backgroundOverlay');
+            const forULink = document.getElementById('forULink');
+
+
+            if (imageContainer.style.display === 'none' || imageContainer.style.display === '') {
+                imageContainer.style.display = 'block';
+                image.classList.add('shake');
+                text.style.display = 'none';
+
+                setTimeout(() => {
+                    image.classList.remove('shake');
+                    text.style.display = 'block';
+
+                    image.style.opacity = '0';
+                    setTimeout(() => {
+                        image.src = 'cat.png'; 
+                        image.style.opacity = '1';
+                        backgroundOverlay.style.backgroundImage = "url('retro.gif')"; 
+                        backgroundOverlay.style.opacity = '0.8';
+                        forULink.style.display = 'block'; // Display the link
+                        music.play();
+                    }, 1550);
+                }, 1300);
+            } else {
+                imageContainer.style.display = 'none';
+                text.style.display = 'none';
+                forULink.style.display = 'none';
+                image.src = 'gudetama.png';
+                image.style.opacity = '1';
+                backgroundOverlay.style.backgroundImage = "url('BG.jpg')";
+                backgroundOverlay.style.opacity = '0.3'; 
+                music.pause();
+                music.currentTime = 0;
+            }
+        }
+    </script>
+</body>
+</html>

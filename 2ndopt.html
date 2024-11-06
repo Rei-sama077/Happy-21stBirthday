@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For u cutie</title>
+    <style>
+        body {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('BG.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.3; /* Adjust this for background transparency */
+            z-index: -1; /* Ensure the background is behind other elements */
+        }
+
+        .image-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            width: 200px;
+            transition: opacity 0.3s ease; /* Smooth transition for image change */
+        }
+
+        .link-box {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .link-box a {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background-color: #ff4081; 
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .link-box a:hover {
+            background-color: #ff1a57;
+        }
+
+	   .kiss-text {
+            font-size: 32px;
+            font-weight: bold;
+            color: #22333b;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <div class="kiss-text">NOW U OWE ME A KISS (and an ice cweam hihihi)</div>
+
+        <img src="nervous.gif" alt="Description" id="dynamicImage">  </div>
+
+    <div class="link-box">
+        <a href="C:\CPE\CIT\3rd year\Happy Birthday/happybirthday.html"
+           onmouseover="changeImage('lick.gif')"
+           onmouseout="resetImage()">Click this for a surprise</a>
+        
+    </div>
+
+    <script>
+        const originalImage = 'hehe.gif'; // Original image path
+        const imageElement = document.getElementById('dynamicImage');
+
+        function changeImage(newImage) {
+            imageElement.src = newImage;
+        }
+
+        function resetImage() {
+            imageElement.src = originalImage;
+        }
+    </script>
+</body>
+</html>

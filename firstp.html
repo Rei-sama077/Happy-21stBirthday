@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For u cutie</title>
+    <style>
+        body {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('BG.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .image-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            width: 200px;
+            transition: opacity 0.3s ease; /* Smooth transition for image change */
+        }
+
+        .link-box {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .link-box a {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background-color: #ff4081; /* Fun, celebratory color */
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            position: relative; /* Make sure the button stays within the context of its container */
+        }
+
+        .link-box a:hover {
+            background-color: #ff1a57;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="nervous.gif" alt="Description" id="dynamicImage"> <!-- Initial image -->
+    </div>
+
+    <div class="link-box">
+        <a href="C:\CPE\CIT\3rd year\Happy Birthday/1stopt.html"
+           onmouseover="changeImage('excited.gif'); moveButton(this)"
+           onmouseout="resetImage()">Click this ദ്ദി ˉ͈̀꒳ˉ͈́ )✧</a>
+        <a href="C:\CPE\CIT\3rd year\Happy Birthday/2ndopt.html"
+           onmouseover="changeImage('no.gif')"
+           onmouseout="resetImage()">Do not click this</a>
+    </div>
+
+    <script>
+        const originalImage = 'nervous.gif'; // Original image path
+        const imageElement = document.getElementById('dynamicImage');
+
+        function changeImage(newImage) {
+            imageElement.src = newImage;
+        }
+
+        function resetImage() {
+            imageElement.src = originalImage;
+        }
+
+        function moveButton(button) {
+            // Get random positions within the window
+            const maxX = window.innerWidth - button.offsetWidth;
+            const maxY = window.innerHeight - button.offsetHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            // Move the button to the random position
+            button.style.position = 'absolute';
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+    </script>
+</body>
+</html>

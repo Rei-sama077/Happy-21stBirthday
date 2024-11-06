@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>my letter for u</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('sakura.gif');
+            background-size: cover, contain;
+            background-repeat: no-repeat, no-repeat;
+            background-position: center center, top right;
+            background-attachment: fixed, fixed;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .overlay-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 80%;
+            max-width: 500px;
+            background-image: url('BG.png');
+            background-size: cover;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            color: #333;
+            text-align: center;
+            animation: showMessage 0.5s forwards;
+            z-index: 1000;
+        }
+
+        .overlay-message p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .overlay-message button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .overlay-message button:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes showMessage {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay-image" id="overlayImage">
+        <img src="kiss.gif" alt="My message for you" style="max-width: 100px; height: auto; cursor: pointer;">
+    </div>
+
+    <div class="overlay-message" id="messageBox">
+        <p>Dear Clayne Cezclark, my cutie patootie,<br><br>
+
+
+Happy 21st Birthday! I’m sorry I wasn’t able to prepare a proper gift, but I really planned to buy you a Dave the Driver. But you bought it already!! Why, aghhh! So I’m giving you this instead, and I hope you’ll like it. By the way, you're the most wonderful person I’ve ever met, to the point that I consider myself the luckiest person to have you as my boyfie. I'm sorry if sometimes I act a little bipolar or worry you when I suddenly go quiet, but I really love you so much. I want to see you smile when giving you gifts but I’m sorry this time for giving you a disappointing gift, but I still hope you like it.
+
+Anyways, Happy Birthday byy I wish for you to be the happiest boi in the world!<br><br> 
+You're beloved girlfriend, Rei
+</p>
+        <button onclick="closeMessage()">Close</button>
+    </div>
+
+    <script>
+        document.getElementById('overlayImage').addEventListener('click', function() {
+            document.getElementById('messageBox').style.display = 'block';
+        });
+
+        function closeMessage() {
+            document.getElementById('messageBox').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
